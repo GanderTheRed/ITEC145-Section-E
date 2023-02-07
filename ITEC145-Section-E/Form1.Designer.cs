@@ -45,8 +45,8 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblCursor = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblTextStart = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -185,21 +185,10 @@
             this.label1.ForeColor = System.Drawing.Color.Chartreuse;
             this.label1.Location = new System.Drawing.Point(116, 146);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 21);
+            this.label1.Size = new System.Drawing.Size(114, 21);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Enter Your Account Number:";
-            // 
-            // lblCursor
-            // 
-            this.lblCursor.AutoSize = true;
-            this.lblCursor.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCursor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblCursor.ForeColor = System.Drawing.Color.Chartreuse;
-            this.lblCursor.Location = new System.Drawing.Point(117, 167);
-            this.lblCursor.Name = "lblCursor";
-            this.lblCursor.Size = new System.Drawing.Size(17, 21);
-            this.lblCursor.TabIndex = 16;
-            this.lblCursor.Text = "_";
+            this.label1.Text = "Make a Choice:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // timer1
             // 
@@ -207,12 +196,22 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lblTextStart
+            // 
+            this.lblTextStart.AutoSize = true;
+            this.lblTextStart.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblTextStart.Location = new System.Drawing.Point(120, 173);
+            this.lblTextStart.Name = "lblTextStart";
+            this.lblTextStart.Size = new System.Drawing.Size(38, 15);
+            this.lblTextStart.TabIndex = 16;
+            this.lblTextStart.Text = "label2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 615);
-            this.Controls.Add(this.lblCursor);
+            this.ClientSize = new System.Drawing.Size(488, 616);
+            this.Controls.Add(this.lblTextStart);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
@@ -230,6 +229,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Bank Machine App";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -253,7 +253,7 @@
         private Button button12;
         private Button button13;
         private Label label1;
-        private Label lblCursor;
         private System.Windows.Forms.Timer timer1;
+        private Label lblTextStart;
     }
 }
