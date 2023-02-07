@@ -6,5 +6,10 @@ namespace ITEC145_Section_E
         {
             InitializeComponent();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
