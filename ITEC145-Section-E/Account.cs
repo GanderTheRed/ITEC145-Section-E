@@ -10,12 +10,13 @@ namespace ITEC145_Section_E
     {
         //Variables to include in one account.
 
-        private string _accNum;
+        private int _accNum;
         private string _firstName;
         private string _lastName;
-        private string _balance;
+        private double _balance;
+        private string _fullName;
 
-        public string AccNum {
+        public int AccNum {
             get { return _accNum; }
             set { _accNum = value; }
         }
@@ -32,10 +33,48 @@ namespace ITEC145_Section_E
             set { _lastName = value; }
         }
 
-        public string Balance
+        public string FullName
+        {
+            get { return _fullName; }
+            set { _fullName = value; }
+        }
+
+        public double Balance
         {
             get { return _balance; }
             set { _balance = value; }
+        }
+
+        public int GetNewAccountNumber()
+        {
+            Random random = new Random();
+            return random.Next(0, 1000000000); ;
+        }
+
+        public void Deposit(int deposit)
+        {
+            if(deposit < 0)
+            {
+                MessageBox.Show("You cannot deposit a negative amount!");
+            }
+            else
+            {
+                double finalBalance = Balance + deposit;
+                Balance = finalBalance;
+            }
+        }
+
+        public void Withdraw(int withdraw)
+        {
+            if (withdraw < 0)
+            {
+                MessageBox.Show("You cannot withdraw a negative amount!");
+            }
+            else
+            {
+                double finalBalance = Balance - withdraw;
+                Balance = finalBalance;
+            }
         }
     }
 }
