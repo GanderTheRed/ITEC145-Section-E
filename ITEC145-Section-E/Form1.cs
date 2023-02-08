@@ -7,7 +7,9 @@ namespace ITEC145_Section_E
 
         string main = "Make a Choice:";         //main menu header text
         string myAccount = "Enter Your 8 Digit Account Number:";    //Header Text Variables
-        string createAccount = "Enter Your Details Below";
+        string createAccount = "Enter Your Details Below:";
+        string viewAllAccounts = "Accounts:";
+
 
         string enteredNumber;               //string to store the currently entered number.
         string finalNumber;                 //string to store the final account number (retrieved from accountNumberList list)
@@ -76,9 +78,16 @@ namespace ITEC145_Section_E
                 MakeLabel("Enter Your Surname:", 95);
                 //Code to create a text box
             }
-            else if (BankMenu == Menu.NoState)
+            else if (BankMenu == Menu.ViewAll)
             {
-              
+                int position = 55;
+                lblHeader.Text = viewAllAccounts;
+                //foreach(Account accounts in ListOfAccounts)
+                //{
+                //  MakeLabel(ListOfAccounts, position);
+                //}
+                //position += 20;
+
             }
         }
 
