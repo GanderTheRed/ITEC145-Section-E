@@ -207,7 +207,7 @@
             this.lblAccountNumber.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblAccountNumber.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAccountNumber.ForeColor = System.Drawing.Color.Chartreuse;
-            this.lblAccountNumber.Location = new System.Drawing.Point(126, 204);
+            this.lblAccountNumber.Location = new System.Drawing.Point(134, 204);
             this.lblAccountNumber.Name = "lblAccountNumber";
             this.lblAccountNumber.Size = new System.Drawing.Size(0, 45);
             this.lblAccountNumber.TabIndex = 16;
