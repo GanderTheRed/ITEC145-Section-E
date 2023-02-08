@@ -113,7 +113,7 @@ namespace ITEC145_Section_E
                     else
                     {
                         accountNumberList.Add(enteredNumber);
-                        string result = String.Join(" ", accountNumberList);    //Learnt about String.Join({char}, array) this from stack overflow. 
+                        string result = String.Join(" ", accountNumberList);    //Learnt about String.Join({char}, array) from stack overflow. 
                         lblAccountNumber.Text = result;
                         enteredNumberCount++;
                     }
