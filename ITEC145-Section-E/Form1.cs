@@ -89,7 +89,7 @@ namespace ITEC145_Section_E
             }
             labels.Clear();
         }
-        public void CheckButtonState(string enteredNumber)              //Used to pass through a buttons number and to also check the state of the menu
+        public void PassButtonValueAndCheckState(string enteredNumber)              //Used to pass through a buttons number and to also check the state of the menu
         {
 
             if (BankMenu == Menu.Main)
@@ -209,7 +209,7 @@ namespace ITEC145_Section_E
                 BankMenu = Menu.MyAccount;
             }
             enteredNumber = "1";
-            CheckButtonState(enteredNumber);
+            PassButtonValueAndCheckState(enteredNumber);
         }
         private void btn2_Click(object sender, EventArgs e)
         {
@@ -218,7 +218,7 @@ namespace ITEC145_Section_E
                 BankMenu = Menu.CreateAccount;
             }
             enteredNumber = "2";
-            CheckButtonState(enteredNumber);
+            PassButtonValueAndCheckState(enteredNumber);
         }
         private void btn3_Click(object sender, EventArgs e)
         {
@@ -227,43 +227,43 @@ namespace ITEC145_Section_E
                 BankMenu = Menu.ViewAll;
             }
             enteredNumber = "3";
-            CheckButtonState(enteredNumber);
+            PassButtonValueAndCheckState(enteredNumber);
         }
         private void btn4_Click(object sender, EventArgs e)
         {
             enteredNumber = "4";
-            CheckButtonState(enteredNumber);
+            PassButtonValueAndCheckState(enteredNumber);
         }
         private void btn5_Click(object sender, EventArgs e)
         {
             
             enteredNumber = "5";
-            CheckButtonState(enteredNumber);
+            PassButtonValueAndCheckState(enteredNumber);
         }
         private void btn6_Click(object sender, EventArgs e)
         {
             enteredNumber = "6";
-            CheckButtonState(enteredNumber);
+            PassButtonValueAndCheckState(enteredNumber);
         }
         private void btn7_Click(object sender, EventArgs e)
         {
             enteredNumber = "7";
-            CheckButtonState(enteredNumber);
+            PassButtonValueAndCheckState(enteredNumber);
         }
         private void btn8_Click(object sender, EventArgs e)
         {
             enteredNumber = "8";
-            CheckButtonState(enteredNumber);
+            PassButtonValueAndCheckState(enteredNumber);
         }
         private void btn9_Click(object sender, EventArgs e)
         {
             enteredNumber = "9";
-            CheckButtonState(enteredNumber);
+            PassButtonValueAndCheckState(enteredNumber);
         }
         private void btn0_Click(object sender, EventArgs e)
         {
             enteredNumber = "0";
-            CheckButtonState(enteredNumber);
+            PassButtonValueAndCheckState(enteredNumber);
         }
         
 
