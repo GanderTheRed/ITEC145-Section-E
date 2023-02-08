@@ -67,9 +67,10 @@ namespace ITEC145_Section_E
             else if(BankMenu == Menu.CreateAccount)
             {
                 lblHeader.Text = createAccount;
-                MakeLabel("Enter Your First Name:", 50);
+                MakeLabel("Enter Your First Name:", 55);
                 //Code to create a text box
-                MakeLabel("Enter Your Surname:", 70);
+                MakeLabel("_", 75);
+                MakeLabel("Enter Your Surname:", 95);
                 //Code to create a text box
             }
             else if (BankMenu == Menu.NoState)
@@ -118,6 +119,29 @@ namespace ITEC145_Section_E
             }
             else if(BankMenu == Menu.CreateAccount)
             {
+                if(inCreateAccount == false)
+                {
+                    ClearScreen();
+                    CheckState();
+                    inCreateAccount = true;
+                }
+                else
+                {
+                    //int textBoxX;
+                    //int textBoxY;
+
+                    //foreach(Label label in labels)
+                    //{
+                    //    if(label.Text.Contains("_"))
+                    //    {
+                    //        textBoxX = label.Left;
+                    //        textBoxY = label.Top;                         In Progress
+                    //        this.Controls.Remove(label);
+                    //        //Create Textbox
+                    //        MakeLabel("_", 115);
+                    //    }
+                    //}
+                }
                 
             }
             else if(BankMenu == Menu.ViewAll)
@@ -149,6 +173,7 @@ namespace ITEC145_Section_E
                 finalNumber = noValue;
                 enteredNumberCount = 0;
                 accountNumberList.Clear();
+                ClearScreen();
                 CheckState();
         }
         private void btn1_Click(object sender, EventArgs e)
