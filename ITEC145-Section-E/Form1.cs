@@ -2,9 +2,33 @@ namespace ITEC145_Section_E
 {
     public partial class Form1 : Form
     {
-        int labelLocationX = 120;
+        int labelLocationX = 120;               //Sets a starting X and Y location for my labels
         int labelLocationY = 173;
+        string main = "Make a Choice:";         //main menu header text
+        string myAccount = "Enter Your 8 Digit Account Number:";    //my account header text
+        string enteredNumber;               //string to store the currently entered number.
+        string finalNumber;                 //string to store the final account number (retrieved from accountNumberList list)
+        string noValue = "";                //Default value, if account number is cleared or cancelled.
+        int enteredNumberCount;             //Count of entered numbers.
+        bool inMyAccount = false;
+        List<string> accountNumberList = new List<string>();   
+        List<Label> labels = new List<Label>();     //List to keep track of my created labels to easily delete them later.
 
+        enum Menu
+        {
+            Main,               //States of my teller machine for if statements (CheckState() method)
+            MyAccount,
+            CreateAccount,
+            ViewAll,
+            NoState
+        }
+        Menu BankMenu = Menu.Main;  //Default state
+
+        public Form1()
+        {
+            InitializeComponent();
+            finalNumber = lblAccountNumber.Text;
+        }
         public void MakeLabel(string message, int locationy)
         {
             Font font = new Font("Segoe UI", 10);
@@ -16,18 +40,81 @@ namespace ITEC145_Section_E
             lbl.ForeColor = Color.Chartreuse;
             lbl.BackColor = Color.Black;
             lbl.Font = font;
+            lbl.Name = "Menu";
             Controls.Add(lbl);
             lbl.BringToFront();
+            labels.Add(lbl);
         }
-           
-
-        public Form1()
+        public void CheckState()
         {
-            InitializeComponent();
-            MakeLabel("1. View My Account", 50);
-            MakeLabel("2. -REDACTED-", 70);
-            MakeLabel("3. -REDACTED-", 90);
+            if(BankMenu == Menu.Main)
+            {
+                lblHeader.Text = main;
+                MakeLabel("1. View My Account.", 50);
+                MakeLabel("2. Create a New Account.", 70);
+                MakeLabel("3. View ALL Accounts.", 90);
+            }
+            if (BankMenu == Menu.MyAccount)
+            {
+                lblHeader.Text = myAccount;
+                lblAccountNumber.Visible = true;
+            }
+            if (BankMenu == Menu.NoState)
+            {
+              
+            }
         }
+        public void CheckButtonState(string enteredNumber)
+        {
+
+            if (BankMenu == Menu.Main)
+            {
+                
+            }
+            else if(BankMenu == Menu.MyAccount)
+            {
+                if (enteredNumberCount == 8)        //Ends once every string in array has been changed.
+                {
+                    //Do nothing
+                }
+                else
+                {
+                    if(inMyAccount == false)
+                    {
+                        foreach (Label label in labels)
+                        {
+                            Controls.Remove(label);
+                        }
+                        labels.Clear();
+                        BankMenu = Menu.MyAccount;
+                        CheckState();
+                        inMyAccount = true;
+                    }
+                    else
+                    {
+                        accountNumberList.Add(enteredNumber);
+                        string result = String.Join(" ", accountNumberList);    //Learnt about this from stack overflow. 
+                        lblAccountNumber.Text = result;
+                        enteredNumberCount++;
+                    }
+                    
+
+                    
+                } 
+            }
+            else if(BankMenu == Menu.ViewAll)
+            {
+
+            }
+        }
+
+
+        public void EnterAccountNumber(string enteredNumber)
+        {
+
+        }
+
+        
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -46,6 +133,127 @@ namespace ITEC145_Section_E
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            MakeLabel("1. View My Account.", 50);
+            MakeLabel("2. Create a New Account.", 70);
+            MakeLabel("3. View ALL Accounts.", 90);
+        }
+
+        private void btn1_Click(object sender, EventArgs e)
+        {
+            if (BankMenu == Menu.Main)
+            {
+                BankMenu = Menu.MyAccount;
+            }
+            enteredNumber = "1";
+            CheckButtonState(enteredNumber);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if(BankMenu == Menu.MyAccount)
+            {
+                BankMenu = Menu.Main;
+                inMyAccount = false;
+                lblAccountNumber.Visible = false;
+                lblAccountNumber.Text = noValue;
+                finalNumber = noValue;
+                enteredNumberCount = 0;
+                accountNumberList.Clear();
+                CheckState();
+            }
+        }
+
+        private void btn2_Click(object sender, EventArgs e)
+        {
+            if(BankMenu == Menu.Main)
+            {
+                BankMenu = Menu.CreateAccount;
+            }
+            enteredNumber = "2";
+            CheckButtonState(enteredNumber);
+        }
+
+        private void btn3_Click(object sender, EventArgs e)
+        {
+            if (BankMenu == Menu.Main)
+            {
+                BankMenu = Menu.ViewAll;
+            }
+            enteredNumber = "3";
+            CheckButtonState(enteredNumber);
+        }
+
+        private void btn4_Click(object sender, EventArgs e)
+        {
+            enteredNumber = "4";
+            CheckButtonState(enteredNumber);
+        }
+
+        private void btn5_Click(object sender, EventArgs e)
+        {
+            
+            enteredNumber = "5";
+            CheckButtonState(enteredNumber);
+        }
+
+        private void btn6_Click(object sender, EventArgs e)
+        {
+            enteredNumber = "6";
+            CheckButtonState(enteredNumber);
+        }
+
+        private void btn7_Click(object sender, EventArgs e)
+        {
+            enteredNumber = "7";
+            CheckButtonState(enteredNumber);
+        }
+
+        private void btn8_Click(object sender, EventArgs e)
+        {
+            enteredNumber = "8";
+            CheckButtonState(enteredNumber);
+        }
+
+        private void btn9_Click(object sender, EventArgs e)
+        {
+            enteredNumber = "9";
+            CheckButtonState(enteredNumber);
+        }
+
+        private void btn0_Click(object sender, EventArgs e)
+        {
+            enteredNumber = "0";
+            CheckButtonState(enteredNumber);
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            if(BankMenu == Menu.MyAccount)
+            {
+                finalNumber = noValue;
+                accountNumberList.Clear();
+                accountNumberList.Add(finalNumber);
+                lblAccountNumber.Text = noValue;
+                enteredNumberCount = 0;
+            }
+            
+        }
+
+        private void btnEnter_Click(object sender, EventArgs e)
+        {
+            if(BankMenu == Menu.MyAccount) 
+            {
+                
+            }
+            else if(BankMenu == Menu.Main) 
+            {
+                MessageBox.Show("Please select an option with the number pad!");
+            }
+            else if(BankMenu == Menu.ViewAll)
+            {
+
+            }
+
             
         }
     }

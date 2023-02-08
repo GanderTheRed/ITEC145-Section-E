@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn1 = new System.Windows.Forms.Button();
@@ -41,12 +40,11 @@
             this.btn8 = new System.Windows.Forms.Button();
             this.btn7 = new System.Windows.Forms.Button();
             this.btn0 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblTextStart = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnEnter = new System.Windows.Forms.Button();
+            this.lblHeader = new System.Windows.Forms.Label();
+            this.lblAccountNumber = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +66,7 @@
             this.btn1.TabIndex = 1;
             this.btn1.Text = "1";
             this.btn1.UseVisualStyleBackColor = true;
+            this.btn1.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn2
             // 
@@ -77,6 +76,7 @@
             this.btn2.TabIndex = 2;
             this.btn2.Text = "2";
             this.btn2.UseVisualStyleBackColor = true;
+            this.btn2.Click += new System.EventHandler(this.btn2_Click);
             // 
             // btn3
             // 
@@ -86,6 +86,7 @@
             this.btn3.TabIndex = 3;
             this.btn3.Text = "3";
             this.btn3.UseVisualStyleBackColor = true;
+            this.btn3.Click += new System.EventHandler(this.btn3_Click);
             // 
             // btn6
             // 
@@ -95,6 +96,7 @@
             this.btn6.TabIndex = 6;
             this.btn6.Text = "6";
             this.btn6.UseVisualStyleBackColor = true;
+            this.btn6.Click += new System.EventHandler(this.btn6_Click);
             // 
             // btn5
             // 
@@ -104,6 +106,7 @@
             this.btn5.TabIndex = 5;
             this.btn5.Text = "5";
             this.btn5.UseVisualStyleBackColor = true;
+            this.btn5.Click += new System.EventHandler(this.btn5_Click);
             // 
             // btn4
             // 
@@ -113,6 +116,7 @@
             this.btn4.TabIndex = 4;
             this.btn4.Text = "4";
             this.btn4.UseVisualStyleBackColor = true;
+            this.btn4.Click += new System.EventHandler(this.btn4_Click);
             // 
             // btn9
             // 
@@ -122,6 +126,7 @@
             this.btn9.TabIndex = 9;
             this.btn9.Text = "9";
             this.btn9.UseVisualStyleBackColor = true;
+            this.btn9.Click += new System.EventHandler(this.btn9_Click);
             // 
             // btn8
             // 
@@ -131,6 +136,7 @@
             this.btn8.TabIndex = 8;
             this.btn8.Text = "8";
             this.btn8.UseVisualStyleBackColor = true;
+            this.btn8.Click += new System.EventHandler(this.btn8_Click);
             // 
             // btn7
             // 
@@ -140,6 +146,7 @@
             this.btn7.TabIndex = 7;
             this.btn7.Text = "7";
             this.btn7.UseVisualStyleBackColor = true;
+            this.btn7.Click += new System.EventHandler(this.btn7_Click);
             // 
             // btn0
             // 
@@ -149,73 +156,73 @@
             this.btn0.TabIndex = 11;
             this.btn0.Text = "0";
             this.btn0.UseVisualStyleBackColor = true;
+            this.btn0.Click += new System.EventHandler(this.btn0_Click);
             // 
-            // button10
+            // btnCancel
             // 
-            this.button10.Location = new System.Drawing.Point(194, 369);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(51, 27);
-            this.button10.TabIndex = 12;
-            this.button10.Text = "Cancel";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(194, 369);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(51, 27);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // button12
+            // btnClear
             // 
-            this.button12.Location = new System.Drawing.Point(194, 407);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(51, 27);
-            this.button12.TabIndex = 13;
-            this.button12.Text = "Clear";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btnClear.Location = new System.Drawing.Point(194, 407);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(51, 27);
+            this.btnClear.TabIndex = 13;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // button13
+            // btnEnter
             // 
-            this.button13.Location = new System.Drawing.Point(194, 443);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(51, 27);
-            this.button13.TabIndex = 14;
-            this.button13.Text = "Enter";
-            this.button13.UseVisualStyleBackColor = true;
+            this.btnEnter.Location = new System.Drawing.Point(194, 443);
+            this.btnEnter.Name = "btnEnter";
+            this.btnEnter.Size = new System.Drawing.Size(51, 27);
+            this.btnEnter.TabIndex = 14;
+            this.btnEnter.Text = "Enter";
+            this.btnEnter.UseVisualStyleBackColor = true;
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
-            // label1
+            // lblHeader
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Chartreuse;
-            this.label1.Location = new System.Drawing.Point(116, 146);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 21);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Make a Choice:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lblHeader.AutoSize = true;
+            this.lblHeader.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblHeader.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblHeader.ForeColor = System.Drawing.Color.Chartreuse;
+            this.lblHeader.Location = new System.Drawing.Point(116, 146);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(114, 21);
+            this.lblHeader.TabIndex = 15;
+            this.lblHeader.Text = "Make a Choice:";
+            this.lblHeader.Click += new System.EventHandler(this.label1_Click);
             // 
-            // timer1
+            // lblAccountNumber
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 500;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // lblTextStart
-            // 
-            this.lblTextStart.AutoSize = true;
-            this.lblTextStart.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTextStart.Location = new System.Drawing.Point(120, 173);
-            this.lblTextStart.Name = "lblTextStart";
-            this.lblTextStart.Size = new System.Drawing.Size(38, 15);
-            this.lblTextStart.TabIndex = 16;
-            this.lblTextStart.Text = "label2";
+            this.lblAccountNumber.AutoSize = true;
+            this.lblAccountNumber.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblAccountNumber.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAccountNumber.ForeColor = System.Drawing.Color.Chartreuse;
+            this.lblAccountNumber.Location = new System.Drawing.Point(126, 204);
+            this.lblAccountNumber.Name = "lblAccountNumber";
+            this.lblAccountNumber.Size = new System.Drawing.Size(0, 45);
+            this.lblAccountNumber.TabIndex = 16;
+            this.lblAccountNumber.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 616);
-            this.Controls.Add(this.lblTextStart);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.lblAccountNumber);
+            this.Controls.Add(this.lblHeader);
+            this.Controls.Add(this.btnEnter);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btn0);
             this.Controls.Add(this.btn9);
             this.Controls.Add(this.btn8);
@@ -249,11 +256,10 @@
         private Button btn8;
         private Button btn7;
         private Button btn0;
-        private Button button10;
-        private Button button12;
-        private Button button13;
-        private Label label1;
-        private System.Windows.Forms.Timer timer1;
-        private Label lblTextStart;
+        private Button btnCancel;
+        private Button btnClear;
+        private Button btnEnter;
+        private Label lblHeader;
+        private Label lblAccountNumber;
     }
 }
