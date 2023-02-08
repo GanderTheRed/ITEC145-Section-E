@@ -4,16 +4,18 @@ namespace ITEC145_Section_E
     {
         int labelLocationX = 120;               //Sets a starting X and Y location for my labels
         int labelLocationY = 173;
+
         string main = "Make a Choice:";         //main menu header text
         string myAccount = "Enter Your 8 Digit Account Number:";    //Header Text Variables
         string createAccount = "Enter Your Details Below";
 
-
         string enteredNumber;               //string to store the currently entered number.
         string finalNumber;                 //string to store the final account number (retrieved from accountNumberList list)
         string noValue = "";                //Default value, if account number is cleared or cancelled.
+
         int enteredNumberCount;             //Count of entered numbers.
-        bool inMyAccount = false;
+
+        bool inMyAccount = false;           //Flags for if a state is ready for changes to the screen
         bool inCreateAccount = false;
         bool inViewAllAccounts = false;
         List<string> accountNumberList = new List<string>();   
@@ -27,7 +29,7 @@ namespace ITEC145_Section_E
             ViewAll,
             NoState
         }
-        Menu BankMenu = Menu.Main;  //Default state
+        Menu BankMenu = Menu.Main;  //Default state on startup
 
         public Form1()
         {
@@ -41,7 +43,7 @@ namespace ITEC145_Section_E
             lbl.Top = labelLocationX + locationy;
             lbl.Left = labelLocationX;
             lbl.AutoSize = true;
-            lbl.Text = message;
+            lbl.Text = message;                                 //Properties for my created labels
             lbl.ForeColor = Color.Chartreuse;
             lbl.BackColor = Color.Black;
             lbl.Font = font;
@@ -50,9 +52,9 @@ namespace ITEC145_Section_E
             lbl.BringToFront();
             labels.Add(lbl);
         }
-        public void CheckState()
+        public void CheckState()                                //Used to decide what to draw on the screen
         {
-            if(BankMenu == Menu.Main)
+            if(BankMenu == Menu.Main)                                   
             {
                 lblHeader.Text = main;
                 MakeLabel("1. View My Account.", 50);
@@ -79,7 +81,7 @@ namespace ITEC145_Section_E
             }
         }
 
-        public void ClearScreen()
+        public void ClearScreen()                           //Removes all labels that have been added to list
         {
             foreach (Label label in labels)
             {
@@ -87,7 +89,7 @@ namespace ITEC145_Section_E
             }
             labels.Clear();
         }
-        public void CheckButtonState(string enteredNumber)
+        public void CheckButtonState(string enteredNumber)              //Used to pass through a buttons number and to also check the state of the menu
         {
 
             if (BankMenu == Menu.Main)
@@ -149,19 +151,12 @@ namespace ITEC145_Section_E
 
             }
         }
-
-
-        
-
         private void Form1_Load(object sender, EventArgs e)
         {
             MakeLabel("1. View My Account.", 50);
             MakeLabel("2. Create a New Account.", 70);
             MakeLabel("3. View ALL Accounts.", 90);
         }
-
-        
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
                 BankMenu = Menu.Main;
@@ -175,6 +170,37 @@ namespace ITEC145_Section_E
                 accountNumberList.Clear();
                 ClearScreen();
                 CheckState();
+        }
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            if (BankMenu == Menu.MyAccount)
+            {
+                finalNumber = noValue;
+                accountNumberList.Clear();
+                accountNumberList.Add(finalNumber);
+                lblAccountNumber.Text = noValue;
+                enteredNumberCount = 0;
+            }
+        }
+        private void btnEnter_Click(object sender, EventArgs e)
+        {
+            if (BankMenu == Menu.MyAccount)
+            {
+                //Code to find account and show details
+
+            }
+            else if (BankMenu == Menu.Main)
+            {
+                MessageBox.Show("Please select an option with the number pad!");
+            }
+            else if (BankMenu == Menu.ViewAll)
+            {
+                //Code to view all accounts
+            }
+            else if (BankMenu == Menu.CreateAccount)
+            {
+                //Code to create accounts
+            }
         }
         private void btn1_Click(object sender, EventArgs e)
         {
@@ -239,37 +265,11 @@ namespace ITEC145_Section_E
             enteredNumber = "0";
             CheckButtonState(enteredNumber);
         }
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            if(BankMenu == Menu.MyAccount)
-            {
-                finalNumber = noValue;
-                accountNumberList.Clear();
-                accountNumberList.Add(finalNumber);
-                lblAccountNumber.Text = noValue;
-                enteredNumberCount = 0;
-            }
-        }
-        private void btnEnter_Click(object sender, EventArgs e)
-        {
-            if(BankMenu == Menu.MyAccount) 
-            {
-                //Code to find account and show details
+        
 
-            }
-            else if(BankMenu == Menu.Main) 
-            {
-                MessageBox.Show("Please select an option with the number pad!");
-            }
-            else if(BankMenu == Menu.ViewAll)
-            {
 
-            }
-            else if(BankMenu == Menu.CreateAccount)
-            {
-                
-            } 
-        }
+        //Accidental Clicks :/
+
         public void EnterAccountNumber(string enteredNumber)
         {
 
