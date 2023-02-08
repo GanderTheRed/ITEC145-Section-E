@@ -18,6 +18,7 @@ namespace ITEC145_Section_E
         bool inMyAccount = false;           //Flags for if a state is ready for changes to the screen
         bool inCreateAccount = false;
         bool inViewAllAccounts = false;
+
         List<string> accountNumberList = new List<string>();   
         List<Label> labels = new List<Label>();     //List to keep track of my created labels to easily delete them later.
 
@@ -91,7 +92,6 @@ namespace ITEC145_Section_E
         }
         public void PassButtonValueAndCheckState(string enteredNumber)              //Used to pass through a buttons number and to also check the state of the menu
         {
-
             if (BankMenu == Menu.Main)
             {
                 
@@ -148,7 +148,16 @@ namespace ITEC145_Section_E
             }
             else if(BankMenu == Menu.ViewAll)
             {
-
+                if (inViewAllAccounts == false)
+                {
+                    ClearScreen();
+                    CheckState();
+                    inViewAllAccounts = true;
+                }
+                else
+                {
+                    //do stuff
+                }
             }
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -266,10 +275,10 @@ namespace ITEC145_Section_E
             PassButtonValueAndCheckState(enteredNumber);
         }
         
-
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Accidental Clicks :/
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
         public void EnterAccountNumber(string enteredNumber)
         {
 
