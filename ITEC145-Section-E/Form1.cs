@@ -81,7 +81,7 @@ namespace ITEC145_Section_E                                     //Inspiration fo
             txt.Top = labelLocationX + locationy;
             txt.Left = labelLocationX + 10;
             txt.Font = font;
-            txt.ForeColor = Color.Chartreuse;
+            txt.ForeColor = Color.Chartreuse;                   //Properties for my created text boxes
             txt.BackColor = Color.Black;
             txt.Name = name;
             Controls.Add(txt);
@@ -601,7 +601,7 @@ namespace ITEC145_Section_E                                     //Inspiration fo
         
         public void EnterAccountNumber(string enteredNumber)
         {
-
+            //Redundant
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -615,6 +615,9 @@ namespace ITEC145_Section_E                                     //Inspiration fo
         {
 
         }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void btnSave_Click(object sender, EventArgs e)
         {
