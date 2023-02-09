@@ -48,7 +48,7 @@ namespace ITEC145_Section_E
         public int GetNewAccountNumber()
         {
             Random random = new Random();
-            return random.Next(0, 1000000000); ;
+            return random.Next(9999999, 99999999); 
         }
 
         public void Deposit(int deposit)
