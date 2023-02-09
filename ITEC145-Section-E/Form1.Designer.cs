@@ -45,6 +45,8 @@
             this.btnEnter = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
             this.lblAccountNumber = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -213,11 +215,33 @@
             this.lblAccountNumber.TabIndex = 16;
             this.lblAccountNumber.Visible = false;
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(266, 492);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(77, 23);
+            this.btnSave.TabIndex = 17;
+            this.btnSave.Text = "Save Accs";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(349, 492);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(77, 23);
+            this.btnLoad.TabIndex = 18;
+            this.btnLoad.Text = "Load Accs";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 616);
+            this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblAccountNumber);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.btnEnter);
@@ -261,5 +285,7 @@
         private Button btnEnter;
         private Label lblHeader;
         private Label lblAccountNumber;
+        private Button btnSave;
+        private Button btnLoad;
     }
 }

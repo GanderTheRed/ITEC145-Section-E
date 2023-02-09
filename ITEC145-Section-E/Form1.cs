@@ -1,20 +1,18 @@
 using System.Linq;
 
-namespace ITEC145_Section_E
+namespace ITEC145_Section_E                                     //Inspiration for this was JJ, and now I bit off more than I wanted to.
 {
     public partial class Form1 : Form
     {
         int labelLocationX = 120;               //Sets a starting X and Y location for my labels
-        int labelLocationY = 173;
+        int labelLocationY = 173;               //Redundant
         int currentCount = 0;
-        int depositWithdraw;
-
+        int depositWithdraw;                    //Redundant
 
         string main = "Make a Choice:";         //main menu header text
         string myAccount = "Enter Your 8 Digit Account Number:";    //Header Text Variables
         string createAccount = "Enter Your Details Below:";
         string viewAllAccounts = "Accounts:";
-
 
         string enteredNumber;               //string to store the currently entered number.
         string finalNumber;                 //string to store the final account number (retrieved from accountNumberList list)
@@ -159,7 +157,6 @@ namespace ITEC145_Section_E
                     {
                         MakeLabel("Press 4 for More...", position + 25);
                     }
-                    
                 }
                 if (currentCount == maxCount)
                     {
@@ -182,58 +179,66 @@ namespace ITEC145_Section_E
                 }
                 else
                 {
-                    bool passed;
-                    Account Account = new Account();        //Potential problem with empty accounts if my if's don't pass
-
-                    foreach (TextBox txt in textboxes)      //This was all was a pain in the butt and hurt my brain
+                    try
                     {
-                        List<String> testList = new List<String>();
+                        bool passed;
+                        Account Account = new Account();        //Potential problem with empty accounts if my if's don't pass
 
-                        for(int i = 0; i < txt.Text.Length; i++)
+                        foreach (TextBox txt in textboxes)      //This was all was a pain in the butt and hurt my brain
                         {
-                            testList.Add(txt.Text.ToUpper().Substring(i,1));          //Sorry for writing this all out in one line. Adds each letter to testList.
-                        }
+                            List<String> testList = new List<String>();
 
-                        foreach (string c in testList)                     //Checks each letter is a legal character
-                        {
-                            if (alphabet.Contains(c))
+                            for(int i = 0; i < txt.Text.Length; i++)
                             {
-                                passed = true;
-                                fieldCheck.Add(passed);
+                                testList.Add(txt.Text.ToUpper().Substring(i,1));          //Sorry for writing this all out in one line. Adds each letter to testList.
+                            }
+
+                            foreach (string c in testList)                     //Checks each letter is a legal character and adds it to a true/false list
+                            {
+                                if (alphabet.Contains(c))
+                                {
+                                    passed = true;
+                                    fieldCheck.Add(passed);
+                                }
+                                else
+                                {
+                                    passed = false;
+                                    fieldCheck.Add(passed);
+                                }
+                            }
+
+                            if (fieldCheck.Contains(false))                     //If an illegal character exists
+                            {
+                                fieldCheck.Clear();
+                                throw new Exception();
                             }
                             else
                             {
-                                passed = false;
-                                fieldCheck.Add(passed);
-                            }
-                        }
+                                if (txt.Name == "FirstName")
+                                {
+                                    Account.FirstName = txt.Text;
+                                }
+                                if (txt.Name == "LastName")
+                                {
+                                    Account.LastName = txt.Text;
+                                }
+                                if (Account.FirstName != null && Account.LastName != null)      //This was more brain pain
+                                {
+                                    Account.FullName = Account.FirstName + " " + Account.LastName;
+                                    Account.Balance = 0;
+                                    Account.AccNum = Account.GetNewAccountNumber();     //Need to check for account numbers that already exist, hopefully I don't forget.
 
-                        if (fieldCheck.Contains(false))
-                        {
-                            fieldCheck.Clear();
-                            MessageBox.Show("Your fields contain non-alphabetical characters, please try again");
-                        }
-                        else
-                        {
-                            if (txt.Name == "FirstName")
-                            {
-                                Account.FirstName = txt.Text;
-                            }
-                            if (txt.Name == "LastName")
-                            {
-                                Account.LastName = txt.Text;
-                            }
-                            if (Account.FirstName != null && Account.LastName != null)      //This was more brain pain
-                            {
-                                Account.FullName = Account.FirstName + " " + Account.LastName;
-                                Account.Balance = 0;
-                                Account.AccNum = Account.GetNewAccountNumber();     //Need to check for account numbers that already exist, hopefully I don't forget.
-
-                                accounts.Add(Account);
-                                BankMenu = Menu.NewAccount;
-                                inCreateAccount = false;
+                                    accounts.Add(Account);
+                                    BankMenu = Menu.NewAccount;
+                                    inCreateAccount = false;
+                                }
                             }
                         }
+                    }
+                    catch
+                    {
+                        inCreateAccount = false;
+                        MessageBox.Show("Your fields contain non-alphabetical characters, please try again");
                     }
                     CheckState();                       
                 }
@@ -263,8 +268,6 @@ namespace ITEC145_Section_E
                 lblHeader.Text = "Enter Deposit Amount";
                 lblAccountNumber.Visible = true;
             }
-
-
         }
         public void PassButtonValueAndCheckState(string enteredNumber)              //Used to pass through a buttons number and to also check the state of the menu
         {
@@ -322,7 +325,6 @@ namespace ITEC145_Section_E
                         inMyDeposit = true;
                         CheckState();
                         inMyAccount = true;
-                        
                     }
                     else if(inMyDeposit == true)
                     {
@@ -612,6 +614,45 @@ namespace ITEC145_Section_E
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if(accounts.Count == 0)
+            {
+                //Do nothing
+            }
+            else
+            {
+                StreamWriter savefile = new StreamWriter("accounts.txt", true);
+
+                foreach (Account account in accounts)
+                {
+                    savefile.WriteLine($"{account.AccNum},{account.FirstName},{account.LastName},{account.Balance}");
+                }
+                savefile.Close();
+            }
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            StreamReader readfile = new StreamReader("accounts.txt");
+            
+            for (int i = 0; !readfile.EndOfStream; i++)
+            {
+                List<string> accountList = new List<string>();
+                string account = readfile.ReadLine();
+                accountList.AddRange(account.Split(","));
+
+                Account loadAccount = new Account();
+                loadAccount.AccNum = int.Parse(accountList[0]);
+                loadAccount.FirstName = accountList[1];
+                loadAccount.LastName = accountList[2];
+                loadAccount.Balance = int.Parse(accountList[3]);
+                loadAccount.FullName = $"{loadAccount.FirstName} {loadAccount.LastName}";
+                accounts.Add(loadAccount);
+            }
+            readfile.Close();
         }
     }
 }
