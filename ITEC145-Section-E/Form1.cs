@@ -620,11 +620,11 @@ namespace ITEC145_Section_E                                     //Inspiration fo
         {
             if(accounts.Count == 0)
             {
-                //Do nothing
+                MessageBox.Show("No Accounts to Save.");
             }
             else
             {
-                StreamWriter savefile = new StreamWriter("accounts.txt", true);
+                StreamWriter savefile = new StreamWriter("accounts.csv", true);
 
                 foreach (Account account in accounts)
                 {
@@ -636,7 +636,7 @@ namespace ITEC145_Section_E                                     //Inspiration fo
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            StreamReader readfile = new StreamReader("accounts.txt");
+            StreamReader readfile = new StreamReader("accounts.csv");
             
             for (int i = 0; !readfile.EndOfStream; i++)
             {
@@ -653,6 +653,7 @@ namespace ITEC145_Section_E                                     //Inspiration fo
                 accounts.Add(loadAccount);
             }
             readfile.Close();
+            MessageBox.Show("Account Load Successful");
         }
     }
 }
